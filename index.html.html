@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Anjal Chapagain | My World</title>
+
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           HOME INTERFACE
+        ========================= */
+
+        #home {
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        #home h1 {
+            font-size: 70px;
+            letter-spacing: 10px;
+            margin-bottom: 40px;
+
+            text-shadow:
+                0 0 10px white,
+                0 0 30px #555;
+        }
+
+
+        /* EXPLORE BUTTON */
+
+        #exploreBtn {
+            padding: 15px 35px;
+
+            font-size: 18px;
+            letter-spacing: 2px;
+
+            background-color: transparent;
+            color: white;
+
+            border: 2px solid white;
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            transition: 0.4s;
+        }
+
+        #exploreBtn:hover {
+            background-color: white;
+            color: black;
+
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 20px white,
+                0 0 40px white,
+                0 0 60px white;
+        }
+
+
+        /* =========================
+           PASSWORD INTERFACE
+        ========================= */
+
+        #passwordPage {
+            display: none;
+
+            height: 100vh;
+
+            justify-content: center;
+            align-items: center;
+
+            flex-direction: column;
+
+            text-align: center;
+        }
+
+        #passwordPage h1 {
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+
+        /* PASSWORD INPUT */
+
+        #passwordInput {
+            width: 280px;
+
+            padding: 14px 20px;
+
+            font-size: 16px;
+
+            text-align: center;
+
+            border: 2px solid white;
+            border-radius: 30px;
+
+            background-color: transparent;
+            color: white;
+
+            outline: none;
+        }
+
+        #passwordInput::placeholder {
+            color: #888;
+        }
+
+
+        /* ENTER BUTTON */
+
+        #enterBtn {
+            margin-top: 20px;
+
+            padding: 12px 30px;
+
+            border: none;
+            border-radius: 25px;
+
+            background-color: white;
+            color: black;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        #enterBtn:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 20px white;
+        }
+
+
+        /* WRONG PASSWORD MESSAGE */
+
+        #message {
+            margin-top: 15px;
+
+            color: red;
+        }
+
+
+        /* =========================
+           BIO-DATA INTERFACE
+        ========================= */
+
+        #biodata {
+            display: none;
+
+            height: 100vh;
+
+            padding: 50px 20px;
+
+            overflow-y: auto;
+        }
+
+
+        #biodata h1 {
+            text-align: center;
+
+            font-size: 50px;
+
+            letter-spacing: 6px;
+
+            margin-bottom: 40px;
+
+            text-shadow:
+                0 0 10px white,
+                0 0 30px #555;
+        }
+
+
+        /* BIO-DATA BOX */
+
+        .bio-box {
+            width: 100%;
+            max-width: 800px;
+
+            margin: auto;
+
+            padding: 30px;
+
+            background-color: #111;
+
+            border: 1px solid #444;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 0 30px #222;
+        }
+
+
+        .bio-box p {
+            padding: 15px 5px;
+
+            font-size: 18px;
+
+            border-bottom: 1px solid #333;
+
+            line-height: 1.5;
+        }
+
+
+        .bio-box p:last-child {
+            border-bottom: none;
+        }
+
+
+        /* LABEL */
+
+        .label {
+            display: inline-block;
+
+            width: 190px;
+
+            color: #888;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           SOCIAL MEDIA & LINKS
+        ========================= */
+
+        .links {
+            text-align: center;
+
+            margin-top: 35px;
+        }
+
+
+        .links h2 {
+            margin-bottom: 20px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .links a {
+            display: inline-block;
+
+            margin: 8px;
+
+            padding: 12px 22px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border: 1px solid white;
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+        }
+
+
+        .links a:hover {
+            background-color: white;
+
+            color: black;
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 0 20px white;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        #backBtn {
+            display: block;
+
+            margin: 30px auto 0;
+
+            padding: 12px 30px;
+
+            border: 1px solid white;
+
+            border-radius: 25px;
+
+            background-color: transparent;
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        #backBtn:hover {
+            background-color: white;
+
+            color: black;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            #home h1 {
+                font-size: 40px;
+
+                letter-spacing: 5px;
+            }
+
+
+            #exploreBtn {
+                font-size: 15px;
+            }
+
+
+            #passwordPage h1 {
+                font-size: 30px;
+            }
+
+
+            #biodata h1 {
+                font-size: 35px;
+            }
+
+
+            .bio-box {
+                padding: 20px;
+            }
+
+
+            .bio-box p {
+                font-size: 16px;
+            }
+
+
+            .label {
+                width: 100%;
+
+                margin-bottom: 5px;
+            }
+
+
+            .links a {
+                display: block;
+
+                margin: 10px auto;
+
+                max-width: 250px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HOME INTERFACE
+    ========================= -->
+
+    <section id="home">
+
+        <h1>MY WORLD</h1>
+
+
+        <button
+            id="exploreBtn"
+            onclick="showPassword()">
+
+            Explore My World
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =========================
+         PASSWORD INTERFACE
+    ========================= -->
+
+    <section id="passwordPage">
+
+        <h1>ENTER PASSWORD</h1>
+
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter your password">
+
+
+        <button
+            id="enterBtn"
+            onclick="checkPassword()">
+
+            Enter
+
+        </button>
+
+
+        <p id="message"></p>
+
+    </section>
+
+
+
+    <!-- =========================
+         BIO-DATA INTERFACE
+    ========================= -->
+
+    <section id="biodata">
+
+        <h1>BIO-DATA</h1>
+
+
+        <div class="bio-box">
+
+
+            <!-- =========================
+                 PERSONAL INFORMATION
+            ========================= -->
+
+            <p>
+                <span class="label">Name:</span>
+                Anjal Chapagain
+            </p>
+
+
+            <p>
+                <span class="label">Nickname:</span>
+                Rijan
+            </p>
+
+
+            <p>
+                <span class="label">Date of Birth:</span>
+                12th-01-2068
+            </p>
+
+
+            <p>
+                <span class="label">Age:</span>
+                15years
+            </p>
+
+
+            <p>
+                <span class="label">Address:</span>
+                Khairhani-2, Chainpur Chowk, Chitwan, Nepal
+            </p>
+
+
+            <p>
+                <span class="label">Standard:</span>
+                9th
+            </p>
+
+
+            <p>
+                <span class="label">Qualification:</span>
+                BLE 2082 from Daisy English Boarding Secondary School
+            </p>
+
+
+            <!-- =========================
+                 INTERESTS
+            ========================= -->
+
+            <p>
+                <span class="label">Passion:</span>
+                Trading
+            </p>
+
+
+            <p>
+                <span class="label">Goal:</span>
+                To become a profitable trader
+            </p>
+
+
+            <p>
+                <span class="label">Favorite Sport:</span>
+                Football
+            </p>
+
+
+            <p>
+                <span class="label">Interests:</span>
+                Driving Cars
+            </p>
+
+
+            <p>
+                <span class="label">Favorite Car:</span>
+                BMW M4 Competition
+            </p>
+
+
+            <p>
+                <span class="label">Hobbies:</span>
+                Reading Books, Watching Football, Exploring the World
+            </p>
+
+
+            <p>
+                <span class="label">Idols:</span>
+                Umar Punjab, David Goggins, Cristiano Ronaldo
+            </p>
+
+
+            <!-- =========================
+                 ABOUT ME
+            ========================= -->
+
+            <p>
+                <span class="label">About Me:</span>
+                I am a student who is interested in trading,
+                football, cars, reading and exploring the world.
+                My goal is to become a profitable trader
+                and continue improving myself.
+            </p>
+
+
+
+            <!-- =========================
+                 SOCIAL LINKS
+            ========================= -->
+
+            <div class="links">
+
+                <h2>MY LINKS</h2>
+
+
+                <a
+                    href="https://www.instagram.com/rijan_710/"
+                    target="_blank">
+
+                    Instagram
+
+                </a>
+
+
+                <a
+                    href="https://www.facebook.com/RijanChapagain"
+                    target="_blank">
+
+                    Facebook
+
+                </a>
+
+
+                <!-- JOURNEY PAGE -->
+
+                <a
+                    href="journey.html">
+
+                    My Journey
+
+                </a>
+
+            </div>
+
+
+
+            <!-- BACK BUTTON -->
+
+            <button
+                id="backBtn"
+                onclick="goBack()">
+
+                ← Back
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /* =========================
+           YOUR PASSWORD
+        ========================= */
+
+        const correctPassword = "Arvin";
+
+
+
+        /* =========================
+           SHOW PASSWORD PAGE
+        ========================= */
+
+        function showPassword() {
+
+            document.getElementById("home").style.display = "none";
+
+            document.getElementById("passwordPage").style.display = "flex";
+
+        }
+
+
+
+        /* =========================
+           CHECK PASSWORD
+        ========================= */
+
+        function checkPassword() {
+
+            const enteredPassword =
+                document.getElementById("passwordInput").value;
+
+
+            const message =
+                document.getElementById("message");
+
+
+            if (enteredPassword === correctPassword) {
+
+                document.getElementById("passwordPage").style.display = "none";
+
+                document.getElementById("biodata").style.display = "block";
+
+                message.innerHTML = "";
+
+            }
+
+            else {
+
+                message.innerHTML =
+                    "Incorrect password!";
+
+            }
+
+        }
+
+
+
+        /* =========================
+           BACK TO HOME
+        ========================= */
+
+        function goBack() {
+
+            document.getElementById("biodata").style.display = "none";
+
+            document.getElementById("home").style.display = "flex";
+
+            document.getElementById("passwordInput").value = "";
+
+            document.getElementById("message").innerHTML = "";
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
